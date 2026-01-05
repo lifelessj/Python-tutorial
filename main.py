@@ -20,7 +20,9 @@ def hangman(tries):
                 |    / \ 
                 |  _/   \_
                 |______________
+        """,
 
+        """
         #hangman feet
         _______
         |     |
@@ -31,6 +33,9 @@ def hangman(tries):
         |  _/   \_
         |______________
         
+         """,
+
+        """
         #hangman right leg
         _______
         |     |
@@ -40,6 +45,10 @@ def hangman(tries):
         |    / \ 
         |   /   \ 
         |______________
+
+         """,
+
+        """
         #hangman left foot
         _______
         |     |
@@ -49,6 +58,10 @@ def hangman(tries):
         |    / 
         |   /   
         |______________
+
+         """,
+
+        """
         #hangman right hand
         _______
         |     |
@@ -58,6 +71,10 @@ def hangman(tries):
         |    
         |     
         |______________
+
+         """,
+
+        """
         #hangman left hand
         _______
         |     |
@@ -67,6 +84,10 @@ def hangman(tries):
         |     
         |      
         |______________
+
+         """,
+
+        """
         #hangman torso
         _______
         |     |
@@ -76,18 +97,26 @@ def hangman(tries):
         |    
         |   
         |______________
+
+         """,
+
+        """
         #hangman head
         _______
         |     |
         |     O
         |______________
+
+         """,
+
+        """
         #hangman zero
         _______
         |     |
         |     
         |______________
 
-        """
+        """,
     ]
     return the_stages(tries)
 
@@ -100,19 +129,19 @@ def get_word():
     Returns a word from wordlist at random
     """
 
-    if DIFFICULTY_LEVEL == "easy":
-        word = random.choice(easy_wordlist)
-    elif DIFFICULTY_LEVEL == "medium":
-        word = random.choice(medium_wordlist)
-    elif DIFFICULTY_LEVEL == "hard":
-        word = random.choice(hard_wordlist)
-    else:
-        word = random.choice(easy_wordlist)
-    return word.upper()
+     if DIFFICULTY_LEVEL == "easy":
+         word = random.choice(easy_wordlist)
+     elif DIFFICULTY_LEVEL == "medium":
+         word = random.choice(medium_wordlist)
+     elif DIFFICULTY_LEVEL == "hard":
+         word = random.choice(hard_wordlist)
+     else:
+         word = random.choice(easy_wordlist)
+     return word.upper()
 
 def choose_difficulty():
     global DIFFICULTY_LEVEL
-    DIFFICULTY_LEVEL = input("Choose your difficulty").lower()
+    DIFFICULTY_LEVEL = input("Choose your difficulty(easy,medium,hard)").lower()
     if DIFFICULTY_LEVEL == "easy":
         return(
             8
@@ -208,3 +237,18 @@ def play(word, initial_tries):
         print("Sorry, you ran out of tries. The word was " + word + ". play again :)")
 
 
+def main():
+    """
+    * This triggers the game by asking for intialization
+    """
+    difficulty = choose_difficulty()
+    word = get_word()
+    play(word, difficulty)
+    while input("Do you want to play Hangman? (y/n): ").upper() == "Y":
+        difficulty = choose_difficulty()
+        word = get_word()
+        play(word, difficulty)
+
+
+if __name__ == "__main__":
+    main()
