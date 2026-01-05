@@ -110,6 +110,24 @@ def get_word():
         word = random.choice(easy_wordlist)
     return word.upper()
 
-def choose_difficulty()
+def choose_difficulty():
+    global DIFFICULTY_LEVEL
+    DIFFICULTY_LEVEL = input("Choose your difficulty").lower()
+    if DIFFICULTY_LEVEL == "easy":
+        return(
+            8
+        )
+    elif DIFFICULTY_LEVEL == "medium":
+        return(
+            6
+        )
+    elif DIFFICULTY_LEVEL =="hard":
+        return(
+            6
+        )
+    else:
+        print("invalid level")
+        return 6
+    
 
 
