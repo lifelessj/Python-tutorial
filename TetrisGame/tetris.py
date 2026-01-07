@@ -93,23 +93,22 @@ class Tetris:
                 self.grid.insert(0, [0 for _ in range(self.width)])
         return lines_cleared
 
-   def lock_piece(self, piece):
+    def lock_piece(self, piece):
         """Lock the piece in place and create a new piece"""
         for i, row in enumerate(piece.shape[piece.rotation % len(piece.shape)]):
             for j, cell in enumerate(row):
                 if cell == "O":
                     self.grid[piece.y + i][piece.x + j] = piece.color
-        # Clear the lines and update the score
+
         lines_cleared = self.clear_lines()
-        self.score += (
-            lines_cleared * 100
-        )  # Update the score based on the number of cleared lines
-        # Create a new piece
+        self.score += lines_cleared * 100
         self.current_piece = self.new_piece()
-        # Check if the game is over
+
         if not self.valid_move(self.current_piece, 0, 0, 0):
             self.game_over = True
+
         return lines_cleared
+
 
     def update(self):
         """Move the tetromino down one cell"""
@@ -228,3 +227,7 @@ def main():
         pygame.display.flip()
         # Set the framerate
         clock.tick(60)
+
+
+if __name__ == "__main__":
+    main()
